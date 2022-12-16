@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,9 +19,6 @@ import java.util.Optional;
 public class ClienteControlador {
 
     private static final Logger log = LoggerFactory.getLogger(ClienteControlador.class);
-    /*
-    TODO: metodo para eliminar, listar y buscar por cedula datos de cliente
-     */
 
     @Autowired
     private ClienteRepositorio clienteRepositorio;
@@ -71,7 +66,7 @@ public class ClienteControlador {
             return ResponseEntity.ok(cliente);
 
         }catch (Exception ex){
-            log.error("No se puede crear cliente: '{}'", crearClienteRequest.getIdentificacionNumero() + " - " + crearClienteRequest.getNombre());
+            log.error("No se puede crear cliente: '{}'. Error: {}", crearClienteRequest.getIdentificacionNumero() + " - " + crearClienteRequest.getNombre(), ex.getMessage());
             return ResponseEntity.badRequest().body("Ha ocurrido un error inesperado. Por favor, inténtelo nuevamente.");
         }
     }
@@ -125,7 +120,7 @@ public class ClienteControlador {
             return ResponseEntity.ok(cliente);
 
         }catch (Exception ex){
-            log.error("No se puede actualizar el cliente: '{}'", editarClienteRequest.getIdentificacionNumero() + " - " + editarClienteRequest.getNombre());
+            log.error("No se puede actualizar el cliente: '{}'. Error: {}", editarClienteRequest.getIdentificacionNumero() + " - " + editarClienteRequest.getNombre(), ex.getMessage());
             return ResponseEntity.badRequest().body("Ha ocurrido un error inesperado. Por favor, inténtelo nuevamente.");
         }
     }
@@ -144,7 +139,7 @@ public class ClienteControlador {
             return ResponseEntity.ok().build();
 
         }catch (Exception ex){
-            log.error("No se puede eliminar el cliente con id: '{}'", clienteId);
+            log.error("No se puede eliminar el cliente con id: '{}'. Error: {}", clienteId, ex.getMessage());
             return ResponseEntity.badRequest().body("Ha ocurrido un error inesperado. Por favor, inténtelo nuevamente.");
         }
     }
@@ -154,7 +149,7 @@ public class ClienteControlador {
         try{
             return ResponseEntity.ok(clienteRepositorio.findAll());
         }catch (Exception ex){
-            log.error("No se puede listar todos los clientes: '{}'", ex.getMessage());
+            log.error("No se puede listar todos los clientes. Error: {}", ex.getMessage());
             return ResponseEntity.badRequest().body("Ha ocurrido un error inesperado. Por favor, inténtelo nuevamente.");
         }
     }
@@ -172,7 +167,7 @@ public class ClienteControlador {
             return ResponseEntity.ok(clienteOptional.get());
 
         }catch (Exception ex){
-            log.error("No se puede encontrar el cliente con identificación número : '{}'", identificacionNumero);
+            log.error("No se puede encontrar el cliente con identificación número : '{}'. Error: {}", identificacionNumero, ex.getMessage());
             return ResponseEntity.badRequest().body("Ha ocurrido un error inesperado. Por favor, inténtelo nuevamente.");
         }
     }
