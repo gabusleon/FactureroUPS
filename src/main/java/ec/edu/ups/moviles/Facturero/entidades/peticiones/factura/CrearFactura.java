@@ -1,4 +1,4 @@
-package ec.edu.ups.moviles.Facturero.entidades.peticiones;
+package ec.edu.ups.moviles.Facturero.entidades.peticiones.factura;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -18,6 +18,8 @@ public class CrearFactura {
     private BigDecimal total;
     @JsonProperty
     private long clienteId;
+    @JsonProperty
+    private long usuarioId;
     @JsonProperty
     private List<CrearFacturaDetalle> detalles;
 
@@ -59,6 +61,14 @@ public class CrearFactura {
 
     public void setClienteId(long clienteId) {
         this.clienteId = clienteId;
+    }
+
+    public long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public List<CrearFacturaDetalle> getDetalles() {

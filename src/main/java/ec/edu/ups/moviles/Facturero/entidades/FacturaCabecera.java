@@ -1,6 +1,8 @@
 package ec.edu.ups.moviles.Facturero.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ec.edu.ups.moviles.Facturero.entidades.tipos.EstadoFactura;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -38,6 +40,16 @@ public class FacturaCabecera implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "facturaCabecera", cascade = CascadeType.ALL)
     @JsonProperty
     private List<FacturaDetalle> detalles;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @JsonProperty
+    private Usuario usuario;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    @JsonProperty
+    private EstadoFactura estadoFactura;
 
     public long getId() {
         return id;
@@ -95,4 +107,19 @@ public class FacturaCabecera implements Serializable {
         this.cliente = cliente;
     }
 
+    public EstadoFactura getEstadoFactura() {
+        return estadoFactura;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setEstadoFactura(EstadoFactura estadoFactura) {
+        this.estadoFactura = estadoFactura;
+    }
 }
