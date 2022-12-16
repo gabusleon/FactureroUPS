@@ -1,4 +1,4 @@
-package ec.edu.ups.moviles.Facturero.entidades.peticiones;
+package ec.edu.ups.moviles.Facturero.entidades.peticiones.servicio;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
