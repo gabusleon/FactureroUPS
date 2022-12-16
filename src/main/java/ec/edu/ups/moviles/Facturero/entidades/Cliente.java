@@ -1,5 +1,6 @@
 package ec.edu.ups.moviles.Facturero.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ec.edu.ups.moviles.Facturero.entidades.tipos.TipoIdentificacion;
@@ -44,7 +45,7 @@ public class Cliente implements Serializable {
     private String correoElectronico;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @JsonIgnore
     private List<FacturaCabecera> facturas;
 
     public long getId() {
