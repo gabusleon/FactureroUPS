@@ -17,4 +17,6 @@ public interface ServicioRepositorio extends JpaRepository<Servicio, Long> {
     @Query(value = "SELECT s FROM Servicio s WHERE s.usuario.id = ?1")
     Optional<List<Servicio>> findServiciosByUsuarioId(Long usuarioId);
 
+    @Query(value = "SELECT s FROM Servicio s WHERE s.usuario.id = ?1 AND s.id = ?2")
+    Optional<Servicio> findServicioByIdAndUsuarioId(Long usuarioId, Long servicioId);
 }
