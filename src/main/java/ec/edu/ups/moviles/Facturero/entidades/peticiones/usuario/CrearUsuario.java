@@ -1,13 +1,15 @@
-package ec.edu.ups.moviles.Facturero.entidades.peticiones;
+package ec.edu.ups.moviles.Facturero.entidades.peticiones.usuario;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class LoginUsuario {
+public class CrearUsuario {
 
     @JsonProperty
     private String username;
     @JsonProperty
     private String password;
+    @JsonProperty
+    private String confirmPassword;
 
     public String getUsername() {
         return username;
@@ -23,5 +25,13 @@ public class LoginUsuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

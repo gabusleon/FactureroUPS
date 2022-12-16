@@ -1,5 +1,6 @@
 package ec.edu.ups.moviles.Facturero.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Nationalized;
 
@@ -24,7 +25,12 @@ public class Usuario implements Serializable {
     private String password;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Servicio> servicios;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<FacturaCabecera> facturasCabecera;
 
     public long getId() {
         return id;
@@ -56,5 +62,13 @@ public class Usuario implements Serializable {
 
     public void setServicios(List<Servicio> servicios) {
         this.servicios = servicios;
+    }
+
+    public List<FacturaCabecera> getFacturasCabecera() {
+        return facturasCabecera;
+    }
+
+    public void setFacturasCabecera(List<FacturaCabecera> facturasCabecera) {
+        this.facturasCabecera = facturasCabecera;
     }
 }

@@ -1,8 +1,8 @@
 package ec.edu.ups.moviles.Facturero.controladores;
 
 import ec.edu.ups.moviles.Facturero.entidades.Usuario;
-import ec.edu.ups.moviles.Facturero.entidades.peticiones.CrearUsuario;
-import ec.edu.ups.moviles.Facturero.entidades.peticiones.LoginUsuario;
+import ec.edu.ups.moviles.Facturero.entidades.peticiones.usuario.CrearUsuario;
+import ec.edu.ups.moviles.Facturero.entidades.peticiones.usuario.LoginUsuario;
 import ec.edu.ups.moviles.Facturero.repositorios.UsuarioRepositorio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
