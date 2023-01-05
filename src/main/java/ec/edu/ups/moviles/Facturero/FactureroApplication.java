@@ -7,14 +7,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class FactureroApplication extends SpringBootServletInitializer {
+public class FactureroApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FactureroApplication.class, args);
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(FactureroApplication.class);
 	}
 }
